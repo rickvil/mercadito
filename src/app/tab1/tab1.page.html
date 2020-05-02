@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Session
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,43 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">Partida</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+<!--  <app-explore-container name="Session"></app-explore-container>-->
+  <div id="container">
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Cree una partida, o suscribase a una</ion-card-subtitle>
+        <ion-card-title>Partida</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Nombre Partida:</ion-label>
+          <ion-input placeholder="Ingrese Nombre" [(ngModel)]="nameGame"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Nickname:</ion-label>
+          <ion-input placeholder="Ingrese Nickname" [(ngModel)]="nickname"></ion-input>
+        </ion-item>
+
+        <section>
+          <ion-button expand="block" (click)="createGame()">Unirse</ion-button>
+        </section>
+
+        <ion-label>Usuarios en linea:</ion-label>
+
+        <section>
+          <ion-button expand="block">Comenzar Partida</ion-button>
+        </section>
+      </ion-card-content>
+
+
+    </ion-card>
+  </div>
+
 </ion-content>
