@@ -4,7 +4,7 @@ export class Player {
     public lastName: string;
     public color: string;
     public animal: string;
-    public frut: string;
+    public fruit: string;
     public vegetable: string;
     public brand: string;
     public country: string;
@@ -17,7 +17,7 @@ export class Player {
             this.lastName = data.lastName || '';
             this.color = data.color || '';
             this.animal = data.animal || '';
-            this.frut = data.frut || '';
+            this.fruit = data.fruit || '';
             this.vegetable = data.vegetable || '';
             this.brand = data.brand || '';
             this.country = data.country || '';

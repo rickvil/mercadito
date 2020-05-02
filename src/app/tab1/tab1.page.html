@@ -13,7 +13,6 @@
     </ion-toolbar>
   </ion-header>
 
-<!--  <app-explore-container name="Session"></app-explore-container>-->
   <div id="container">
 
     <ion-card>
@@ -24,13 +23,13 @@
 
       <ion-card-content>
         <ion-item>
-          <ion-label>Nombre Partida:</ion-label>
-          <ion-input placeholder="Ingrese Nombre" [(ngModel)]="nameGame"></ion-input>
+          <ion-label position="floating">Nombre Partida:</ion-label>
+          <ion-input [(ngModel)]="nameGame"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label>Nickname:</ion-label>
-          <ion-input placeholder="Ingrese Nickname" [(ngModel)]="nickname"></ion-input>
+          <ion-label position="floating">Nickname:</ion-label>
+          <ion-input [(ngModel)]="nickname"></ion-input>
         </ion-item>
 
         <section>
@@ -43,7 +42,6 @@
           <ion-button expand="block">Comenzar Partida</ion-button>
         </section>
       </ion-card-content>
-
 
     </ion-card>
   </div>

@@ -1,17 +1,70 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 2
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="player && game">
+      {{player.id}} juegas con la {{game.letter}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content fullscreen>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-list *ngIf="player && game">
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input [(ngModel)]="player.name" readonly="{{!game.available}}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Apellido</ion-label>
+      <ion-input [(ngModel)]="player.lastName" readonly="{{!game.available}}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Color</ion-label>
+      <ion-input [(ngModel)]="player.color" readonly="{{!game.available}}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Animal</ion-label>
+      <ion-input [(ngModel)]="player.animal" readonly="{{!game.available}}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Fruta</ion-label>
+      <ion-input [(ngModel)]="player.fruit" readonly="{{!game.available}}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Verdura</ion-label>
+      <ion-input [(ngModel)]="player.vegetable" readonly="{{!game.available}}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Marca</ion-label>
+      <ion-input [(ngModel)]="player.brand" readonly="{{!game.available}}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Pais</ion-label>
+      <ion-input [(ngModel)]="player.country" readonly="{{!game.available}}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Objeto</ion-label>
+      <ion-input [(ngModel)]="player.something" readonly="{{!game.available}}"></ion-input>
+    </ion-item>
+
+  </ion-list>
 </ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <section *ngIf="game">
+      <ion-button expand="block" (click)="endRound()" disabled="{{!game.available}}">Finalizar Ronda</ion-button>
+      <ion-button expand="block" (click)="goTabValidate()" disabled="{{game.available}}">Validar Datos</ion-button>
+    </section>
+  </ion-toolbar>
+</ion-footer>
