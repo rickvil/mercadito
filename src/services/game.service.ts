@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {AngularFireDatabase, AngularFireList, AngularFireObject} from '@angular/fire/database';
+import {AngularFireDatabase} from '@angular/fire/database';
 import {Game} from '../models/game.model';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
 

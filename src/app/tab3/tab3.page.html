@@ -1,65 +1,100 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-<!--    <ion-buttons slot="start">-->
-<!--      <ion-back-button defaultHref="/tabs/tab2"></ion-back-button>-->
-<!--    </ion-buttons>-->
     <ion-buttons slot="start" (click)="goBack()">
       <ion-icon color="primary" class="back-button" name="arrow-back-outline"></ion-icon>
     </ion-buttons>
     <ion-title *ngIf="idGame">
-      {{idGame}}
+      Partida: {{idGame}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 
-<ion-content fullscreen class="ion-padding" scroll-y="false">
+<ion-content fullscreen class="ion-padding" scroll-y="true">
   <ion-slides pager="true">
 
-    <ion-slide>
-      <ion-card>
+    <ion-slide *ngFor="let player of players">
+      <ion-card style="width:100%">
         <ion-card-header>
-          <ion-card-subtitle>Destination</ion-card-subtitle>
-          <ion-card-title>Madison, WI</ion-card-title>
+          <ion-card-title>{{player.id}}</ion-card-title>
         </ion-card-header>
-        <ion-card-content>
-          Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
-        </ion-card-content>
-      </ion-card>
-    </ion-slide>
 
-    <ion-slide>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-subtitle>Destination</ion-card-subtitle>
-          <ion-card-title>Madison, WI</ion-card-title>
-        </ion-card-header>
         <ion-card-content>
-          Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
-        </ion-card-content>
-      </ion-card>
-    </ion-slide>
 
-    <ion-slide>
-      <ion-card class="ion-margin-top">
-        <ion-card-header>
-          <ion-card-subtitle>Destination</ion-card-subtitle>
-          <ion-card-title>Madison, WI</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
-        </ion-card-content>
-      </ion-card>
-    </ion-slide>
+          <ion-list>
+             <ion-item>
+              <ion-label>
+                <p>Nombre</p>
+                <h3>{{player.name}}</h3>
+              </ion-label>
+              <ion-toggle slot="end"></ion-toggle>
+            </ion-item>
 
-    <ion-slide>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-subtitle>Destination</ion-card-subtitle>
-          <ion-card-title>Madison, WI</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
+            <ion-item>
+              <ion-label>
+                <p>Nombre</p>
+                <h3>{{player.lastName}}</h3>
+              </ion-label>
+              <ion-toggle slot="end"></ion-toggle>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>
+                <p>Color</p>
+                <h3>{{player.color}}</h3>
+              </ion-label>
+              <ion-toggle slot="end"></ion-toggle>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>
+                <p>Animal</p>
+                <h3>{{player.animal}}</h3>
+              </ion-label>
+              <ion-toggle slot="end"></ion-toggle>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>
+                <p>Fruta</p>
+                <h3>{{player.fruit}}</h3>
+              </ion-label>
+              <ion-toggle slot="end"></ion-toggle>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>
+                <p>Verdura</p>
+                <h3>{{player.vegetable}}</h3>
+              </ion-label>
+              <ion-toggle slot="end"></ion-toggle>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>
+                <p>Marca</p>
+                <h3>{{player.brand}}</h3>
+              </ion-label>
+              <ion-toggle slot="end"></ion-toggle>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>
+                <p>Pais</p>
+                <h3>{{player.country}}</h3>
+              </ion-label>
+              <ion-toggle slot="end"></ion-toggle>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>
+                <p>Objeto</p>
+                <h3>{{player.something}}</h3>
+              </ion-label>
+              <ion-toggle slot="end"></ion-toggle>
+            </ion-item>
+
+          </ion-list>
         </ion-card-content>
       </ion-card>
     </ion-slide>
