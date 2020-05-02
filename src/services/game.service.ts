@@ -12,7 +12,7 @@ export class GameService {
   }
 
   createGame(idGame: string) {
-    const game = new Game({id: idGame, available: true, letter: null}) ;
+    const game = new Game({id: idGame, available: false, letter: null}) ;
 
     const games: AngularFirestoreCollection<Game> = this.afs.collection<Game>('games');
     return games.doc(game.id).set(Object.assign({}, game));
@@ -24,5 +24,11 @@ export class GameService {
 
   updateGame(game: Game) {
     return this.afs.doc<Game>(`games/${game.id}`).update(Object.assign({}, game));
+  }
+
+  generateRandomLetter() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const charactersLength = characters.length;
+    return characters.charAt(Math.floor(Math.random() * charactersLength));
   }
 }

@@ -1,29 +1,22 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Session
+      Sala
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Partida</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <div id="container">
 
     <ion-card>
       <ion-card-header>
-        <ion-card-subtitle>Cree una partida, o suscribase a una</ion-card-subtitle>
-        <ion-card-title>Partida</ion-card-title>
+        <ion-card-subtitle>Cree una sala, o suscribase a una</ion-card-subtitle>
       </ion-card-header>
 
       <ion-card-content>
         <ion-item>
-          <ion-label position="floating">Nombre Partida:</ion-label>
+          <ion-label position="floating">Nombre Sala:</ion-label>
           <ion-input [(ngModel)]="nameGame"></ion-input>
         </ion-item>
 
@@ -31,16 +24,29 @@
           <ion-label position="floating">Nickname:</ion-label>
           <ion-input [(ngModel)]="nickname"></ion-input>
         </ion-item>
-
+        <br>
         <section>
-          <ion-button expand="block" (click)="createGame()">Unirse</ion-button>
+          <ion-button expand="block" (click)="createGame()">Crear</ion-button>
         </section>
 
-        <ion-label>Usuarios en linea:</ion-label>
-
-        <section>
-          <ion-button expand="block">Comenzar Partida</ion-button>
+        <br>
+        <section *ngIf="game">
+          <ion-button expand="block" (click)="startGame()" disabled="{{game.available}}">Comenzar Partida</ion-button>
         </section>
+
+        <br>
+        <section *ngIf="game">
+          <ion-button expand="block" (click)="joinGame()" disabled="{{!game.available}}">Unirse al Juego</ion-button>
+        </section>
+
+        <br>
+        <div *ngIf="players">
+          <ion-label >Usuarios en linea ({{players.length}}):</ion-label>
+          <ion-label *ngFor="let player of players">
+            {{player.id}} |
+          </ion-label>
+        </div>
+
       </ion-card-content>
 
     </ion-card>
