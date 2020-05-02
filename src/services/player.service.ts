@@ -16,12 +16,11 @@ export class PlayerService {
     return players.doc(player.id).set(Object.assign({}, player));
   }
 
-  getSessionPlayer(idGame: string, nickname: string){
-    const playerSession: AngularFirestoreDocument<Player> = this.afs.doc<Player>(`games/${idGame}/players/${nickname}`);
-    return playerSession;
+  getSessionPlayer(idGame: string, nickname: string): AngularFirestoreDocument<Player> {
+    return this.afs.doc<Player>(`games/${idGame}/players/${nickname}`);
   }
 
-  playersInSession(idGame: string){
+  playersInSession(idGame: string) {
     const players: AngularFirestoreCollection<Player> = this.afs.collection<Player>(`games/${idGame}/players`);
     players.valueChanges().subscribe((users) => {
       console.log('users:', users);
