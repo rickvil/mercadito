@@ -20,6 +20,10 @@ export class PlayerService {
     return this.afs.doc<Player>(`games/${idGame}/players/${nickname}`);
   }
 
+  updateSessionPlayer(player: Player, idGame: string) {
+    return this.afs.doc<Player>(`games/${idGame}/players/${player.id}`).update(Object.assign({}, player));
+  }
+
   playersInSession(idGame: string) {
     const players: AngularFirestoreCollection<Player> = this.afs.collection<Player>(`games/${idGame}/players`);
     players.valueChanges().subscribe((users) => {

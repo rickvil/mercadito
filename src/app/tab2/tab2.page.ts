@@ -30,31 +30,30 @@ export class Tab2Page implements OnInit {
   }
 
   public loadGame() {
-    console.log('ocho');
     this.gameService.getGame(this.idGame).valueChanges().subscribe((gameDoc) => {
       this.game = gameDoc;
-      console.log('gameDoc: ', gameDoc);
       if (!this.game.available) {
-        this.saveValues();
+        this.saveValuesPlayer();
       }
     });
   }
 
   public loadPlayer() {
-    console.log('nueve');
     this.playerService.getSessionPlayer(this.idGame, this.nickname).valueChanges().subscribe((playerDoc) => {
       this.player = playerDoc;
-      console.log('playerDoc: ', playerDoc);
     });
   }
 
   public endRound() {
-    console.log('finalizar ronda');
-    this.saveValues();
+
+    this.game.available = false;
+    this.gameService.updateGame(this.game).then(() => console.log('sucess endRound'));
   }
 
-  public saveValues() {
-    console.log('save ronda');
+  public saveValuesPlayer() {
+    if (this.player) {
+      this.playerService.updateSessionPlayer(this.player, this.idGame).then(() => console.log('sucess saveValuesPlayer'));
+    }
   }
 
   public goTabValidate() {

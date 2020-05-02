@@ -22,7 +22,7 @@ export class GameService {
     return this.afs.doc<Game>(`games/${idGame}`);
   }
 
-  updateGame() {
-
+  updateGame(game: Game) {
+    return this.afs.doc<Game>(`games/${game.id}`).update(Object.assign({}, game));
   }
 }
