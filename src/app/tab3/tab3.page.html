@@ -1,10 +1,9 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start" (click)="goBack()">
-      <ion-icon color="primary" class="back-button" name="arrow-back-outline"></ion-icon>
-    </ion-buttons>
-    <ion-title *ngIf="idGame">
-      Partida: {{idGame}}
+  <ion-toolbar *ngIf="idGame && nickname">
+    <!--    <ion-buttons slot="start" (click)="goBack()">-->
+    <!--      <ion-icon color="primary" class="back-button" name="arrow-back-outline"></ion-icon>-->
+    <!--    </ion-buttons>-->
+    <ion-title size="small" color="danger"> "{{nickname}}", estas calificando los resulados de la sala"{{idGame}}" jugado con la letra
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -101,3 +100,13 @@
 
   </ion-slides>
 </ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <section>
+      <ion-button expand="block" (click)="endQualify()">Finalizar Calificacion</ion-button>
+      <br>
+      <br>
+    </section>
+  </ion-toolbar>
+</ion-footer>

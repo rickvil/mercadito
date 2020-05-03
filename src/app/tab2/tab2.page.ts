@@ -57,6 +57,6 @@ export class Tab2Page implements OnInit {
   }
 
   public goTabValidate() {
-    this.router.navigate(['tabs/tab3', { idGame: this.game.id}]);
+    this.router.navigate(['tabs/tab3', { idGame: this.idGame, nickname: this.nickname}]);
   }
 }

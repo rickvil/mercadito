@@ -27,4 +27,8 @@ export class PlayerService {
   getAllPlayers(idGame: string): AngularFirestoreCollection<Player> {
     return this.afs.collection<Player>(`games/${idGame}/players`);
   }
+
+  removePlayer(idGame: string, idPlayer:string) {
+    return this.afs.doc<Player>(`games/${idGame}/players/${idPlayer}`).delete();
+  }
 }
