@@ -4,7 +4,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {PlayerService} from '../../services/player.service';
 import {Player} from '../../models/player.model';
 import {GameService} from '../../services/game.service';
-import {Game} from '../../models/game.model';
 
 @Component({
   selector: 'app-tab3',
@@ -14,6 +13,7 @@ import {Game} from '../../models/game.model';
 export class Tab3Page implements OnInit {
   public idGame: string;
   public nickname: string;
+  public letter: string;
   public players: Array<Player>;
 
   constructor(private route: ActivatedRoute, private navCtrl: NavController, private playerService: PlayerService,
@@ -23,6 +23,7 @@ export class Tab3Page implements OnInit {
     await this.route.params.subscribe((data: any) => {
       this.idGame = data.idGame;
       this.nickname = data.nickname;
+      this.letter = data.letter;
 
       this.playerService.getAllPlayers(this.idGame).valueChanges().subscribe((players) => {
         this.players = players;
@@ -35,11 +36,11 @@ export class Tab3Page implements OnInit {
   }
 
   endQualify() {
-    const game = new Game({id: this.idGame, available: false, letter: null});
-    this.gameService.updateGame(game).then(() => {
+    // const game = new Game({id: this.idGame, available: false, letter: null});
+    // this.gameService.updateGame(game).then(() => {
       // this.playerService.removePlayer(this.idGame, this.nickname).then(() => {
         this.router.navigate(['tabs/tab1']);
       // });
-    });
+    // });
   }
 }

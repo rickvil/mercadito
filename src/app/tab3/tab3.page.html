@@ -1,9 +1,9 @@
 <ion-header [translucent]="true">
-  <ion-toolbar *ngIf="idGame && nickname">
+  <ion-toolbar *ngIf="idGame && nickname && letter">
     <!--    <ion-buttons slot="start" (click)="goBack()">-->
     <!--      <ion-icon color="primary" class="back-button" name="arrow-back-outline"></ion-icon>-->
     <!--    </ion-buttons>-->
-    <ion-title size="small" color="danger"> "{{nickname}}", estas calificando los resulados de la sala"{{idGame}}" jugado con la letra
+    <ion-title size="small" color="danger"> "{{nickname}}", estas calificando los resulados de la sala"{{idGame}}" jugado con la letra "{{letter}}"
     </ion-title>
   </ion-toolbar>
 </ion-header>
