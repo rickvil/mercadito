@@ -4,6 +4,7 @@ import {PlayerService} from '../../services/player.service';
 import {GameService} from '../../services/game.service';
 import {Player} from '../../models/player.model';
 import {Game} from '../../models/game.model';
+import {ToastController} from "@ionic/angular";
 
 @Component({
   selector: 'app-tab2',
@@ -17,7 +18,7 @@ export class Tab2Page implements OnInit {
   public game: Game;
 
   constructor(private route: ActivatedRoute, private gameService: GameService, private playerService: PlayerService,
-              public router: Router) {}
+              public router: Router, public toastController: ToastController) {}
 
   async ngOnInit() {
     await this.route.params.subscribe((data: any) => {
@@ -34,6 +35,7 @@ export class Tab2Page implements OnInit {
       this.game = gameDoc;
       if (!this.game.available) {
         this.saveValuesPlayer();
+        this.notifyFinishGame();
       }
     });
   }
@@ -58,5 +60,17 @@ export class Tab2Page implements OnInit {
 
   public goTabValidate() {
     this.router.navigate(['tabs/tab3', { idGame: this.idGame, nickname: this.nickname}]);
+  }
+
+  async notifyFinishGame() {
+    const toast = await this.toastController.create({
+      header: 'Saques que??',
+      message: 'Alguien ha Terminado la partida antes que vos GATO!',
+      duration: 5000,
+      position: 'middle',
+      color: 'warning'
+    });
+    toast.present();
+
   }
 }
