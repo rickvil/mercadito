@@ -1,10 +1,9 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
+  <ion-toolbar *ngIf="player && game">
+    <ion-buttons slot="start" *ngIf="game.available">
       <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
     </ion-buttons>
-    <ion-title *ngIf="player && game">
-      {{player.id}} juegas con la {{game.letter}}
+    <ion-title size="small" color="danger"> "{{player.id}}", estas en la sala "{{game.id}}" jugando con la letra "{{game.letter}}"
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -63,8 +62,10 @@
 <ion-footer class="ion-no-border">
   <ion-toolbar>
     <section *ngIf="game">
-      <ion-button expand="block" (click)="endRound()" disabled="{{!game.available}}">Finalizar Ronda</ion-button>
-      <ion-button expand="block" (click)="goTabValidate()" disabled="{{game.available}}">Validar Datos</ion-button>
+      <ion-button expand="block" (click)="endRound()" disabled="{{!game.available}}">Finalizar Partida</ion-button>
+      <br>
+      <ion-button expand="block" (click)="goTabValidate()" disabled="{{game.available}}">Calificar los Resultados</ion-button>
+      <br>
     </section>
   </ion-toolbar>
 </ion-footer>
